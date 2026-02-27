@@ -19,6 +19,7 @@ export function showMenu() {
             resetGame()
         }
         console.clear()
+
         console.log(`
 ==========================
     DEVLINGO ARENA
@@ -40,6 +41,9 @@ Score: ${getScore()} | Lives: ${getLives()}
             "1": () => { console.clear(), quiz() },
             "2": () => { console.clear(), completeSentence() },
             "3": () => { console.clear(), sentenceBuilder() },
+            "4": () => { console.clear(), memoryChallenge() },
+            "5": () => { console.clear(), battleRPG() },
+            "6": () => { console.clear(), detectiveStory() },
             "0": () => { console.clear(), console.log("Program shutting down..."), process.exit() }
         }
 
@@ -48,7 +52,6 @@ Score: ${getScore()} | Lives: ${getLives()}
         } else {
             console.log("Invalid option!");
         }
-
     }
 }
 
