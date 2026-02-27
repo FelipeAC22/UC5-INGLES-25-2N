@@ -1,3 +1,3 @@
-export function memoryChallenge(params) {
+export function memoryChallenge() {
     
 }

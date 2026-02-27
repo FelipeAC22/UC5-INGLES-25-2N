@@ -1,7 +1,7 @@
 import * as  ask from 'readline-sync'
 import { addScore } from "../gameState.js";
 import { loseLife } from "../gameState.js";
-import { getScore  } from "../gameState.js";
+import { getScore } from "../gameState.js";
 import { getLives } from "../gameState.js";
 import { resetGame } from "../gameState.js";
 
@@ -32,14 +32,14 @@ export function quiz() {
 
     questions.forEach(q => {
 
-        console.log("\n" + q.question);
+        console.log("\n" + q.question)
         q.options.forEach(opt => console.log(opt))
 
         let answer = ask.question("Answer: ")
 
         if (answer === q.answer) {
             console.log("Correct!")
-           addScore(10)
+            addScore(10)
         } else {
             console.log("Wrong!")
             loseLife()

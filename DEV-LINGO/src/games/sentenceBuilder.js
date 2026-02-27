@@ -7,23 +7,29 @@ import { resetGame } from "../gameState.js";
 
 export function sentenceBuilder() {
 
-    const challenge = {
-        words: ["developer", "is", "He", "a"],
-        correct: "He is a developer"
-    }
+    let challenge = [
+        {
+            words: ["developer", "is", "He", "a"],
+            correct: "He is a developer"
+        },
+        {
+            words:["is", "perfect", "She"],
+            correct: "She is perfect"
+        }
+    ]
 
     challenge.forEach(c => {
 
         console.log("\nReorder the words to form a sentence:")
-        console.log(challenge.words.join(" | "))
+        console.log(c.words.join(" | "))
 
         let answer = ask.question("Sentence: ")
 
-        if (answer === challenge.correct) {
+        if (answer === c.correct) {
             console.log("Correct!")
             addScore(15)
         } else {
-            console.log("Wrong! Correct sentence:", challenge.correct)
+            console.log("Wrong! Correct sentence:", c.correct)
             loseLife()
         }
     })
