@@ -36,25 +36,20 @@ Score: ${getScore()} | Lives: ${getLives()}
 
         let option = ask.question("Choose an option: ")
 
-        switch (option) {
-            case "1": quiz()
-                break;
-            case "2": completeSentence()
-                break;
-            case "3": sentenceBuilder()
-                break;
-            case "4": memoryChallenge()
-                break;
-            case "5": battleRPG()
-                break;
-            case "6": detectiveStory()
-                break;
-            case "0":
-                console.log("Program shuting down...")
-                process.exit()
-            default:
-                console.log("Invalid option!")
+        let actions = {
+            "1": () => { console.clear(), quiz() },
+            "2": () => { console.clear(), completeSentence() },
+            "3": () => { console.clear(), sentenceBuilder() },
+            "0": () => { console.clear(), console.log("Program shutting down..."), process.exit() }
         }
+
+        if (actions[option]) {
+            actions[option]()
+        } else {
+            console.log("Invalid option!");
+        }
+
     }
 }
+
 
