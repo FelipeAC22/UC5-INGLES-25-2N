@@ -1,6 +1,4 @@
-import * as ask from 'readline-sync'
-import { addScore } from "./gameState.js";
-import { loseLife } from "./gameState.js";
+import * as ask from 'readline-sync';
 import { getScore } from "./gameState.js";
 import { getLives } from "./gameState.js";
 import { resetGame } from "./gameState.js";
@@ -20,7 +18,7 @@ export function showMenu() {
             console.log("Final Score:", getScore())
             resetGame()
         }
-
+        console.clear()
         console.log(`
 ==========================
     DEVLINGO ARENA
@@ -51,7 +49,9 @@ Score: ${getScore()} | Lives: ${getLives()}
                 break;
             case "6": detectiveStory()
                 break;
-            case "0": process.exit()
+            case "0":
+                console.log("Program shuting down...")
+                process.exit()
             default:
                 console.log("Invalid option!")
         }
