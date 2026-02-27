@@ -50,7 +50,7 @@ Score: ${getScore()} | Lives: ${getLives()}
         if (actions[option]) {
             actions[option]()
         } else {
-            console.log("Invalid option!");
+            console.log("Invalid option!")
         }
     }
 }
