@@ -1,7 +1,5 @@
 import * as ask from 'readline-sync';
-import { getScore } from "./gameState.js";
-import { getLives } from "./gameState.js";
-import { resetGame } from "./gameState.js";
+import { getScore, getLives, resetGame } from "./gameState.js";
 import { quiz } from "./games/quiz.js";
 import { completeSentence } from "./games/completeSentence.js";
 import { sentenceBuilder } from "./games/sentenceBuilder.js";
@@ -11,14 +9,29 @@ import { detectiveStory } from "./games/detectiveStory.js";
 
 export function showMenu() {
 
+    let actions = {
+        "1": quiz,
+        "2": completeSentence,
+        "3": sentenceBuilder,
+        "4": memoryChallenge,
+        "5": battleRPG,
+        "6": detectiveStory,
+        "0": () => {
+            console.clear()
+            console.log("Program shutting down...")
+            process.exit()
+        }
+    }
+
     while (true) {
 
         if (getLives() <= 0) {
-            console.log("\nGAME OVER")
+            console.clear()
+            console.log("\n===== GAME OVER =====")
             console.log("Final Score:", getScore())
+            ask.question("\nPress ENTER to restart...")
             resetGame()
-        }
-        console.clear()
+        } else { console.clear() }
 
         console.log(`
 ==========================
@@ -37,15 +50,7 @@ Score: ${getScore()} | Lives: ${getLives()}
 
         let option = ask.question("Choose an option: ")
 
-        let actions = {
-            "1": () => { console.clear(), quiz() },
-            "2": () => { console.clear(), completeSentence() },
-            "3": () => { console.clear(), sentenceBuilder() },
-            "4": () => { console.clear(), memoryChallenge() },
-            "5": () => { console.clear(), battleRPG() },
-            "6": () => { console.clear(), detectiveStory() },
-            "0": () => { console.clear(), console.log("Program shutting down..."), process.exit() }
-        }
+        console.clear()
 
         if (actions[option]) {
             actions[option]()

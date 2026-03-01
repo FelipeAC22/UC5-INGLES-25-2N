@@ -1,6 +1,5 @@
 import * as ask from 'readline-sync';
-import { addScore } from "../gameState.js";
-import { loseLife } from "../gameState.js";
+import { addScore, loseLife} from "../gameState.js";
 
 export function battleRPG() {
 

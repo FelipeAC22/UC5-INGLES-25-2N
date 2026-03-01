@@ -1,21 +1,52 @@
 import * as ask from 'readline-sync';
-import { addScore } from "../gameState.js";
-import { loseLife } from "../gameState.js";
+import { addScore, loseLife} from "../gameState.js";
 
 export function memoryChallenge() {
 
-    const words = ["code", "debug", "function", "variable"]
+    const words = [
+        "code", "debug", "function", "variable", "loop", "array", "object", "class",
+        "method", "string", "boolean", "integer", "float", "compile", "execute",
+        "return", "parameter", "argument", "syntax", "algorithm", "framework",
+        "library", "database", "server", "client", "frontend", "backend",
+        "repository", "commit", "branch", "merge", "deploy", "script", "interface", "module"
+    ]
+
+    let wordsDrawn = []
+
+    while (wordsDrawn.length < 5) {
+        let draw = Math.floor(Math.random() * words.length);
+
+        if (!wordsDrawn.includes(words[draw])) {
+            wordsDrawn.push(words[draw]);
+        }
+    }
 
     console.log("\nMemorize these words:")
-    console.log(words.join(", "))
+    console.log(wordsDrawn.join(" | "))
 
     ask.question("\nPress ENTER when ready...")
 
     console.clear()
 
-    let answer = ask.question("Type the words separated by comma: ")
+    let userWords = []
+    for (let word of ask.question("Type the words separated by comma: ").split(",")) {
+        userWords.push(word.trim().toLowerCase())
+    }
 
-    if (answer === words.join(", ")) {
+    let isCorrect = false
+
+    if (userWords.length === wordsDrawn.length) {
+        isCorrect = true
+
+        for (let i = 0; i < userWords.length; i++) {
+            if (!wordsDrawn.includes(userWords[i])) {
+                isCorrect = false
+                break;
+            }
+        }
+    }
+
+    if (isCorrect) {
         console.log("Perfect memory!")
         addScore(20)
     } else {
