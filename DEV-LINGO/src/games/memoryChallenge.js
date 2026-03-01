@@ -1,5 +1,5 @@
 import * as ask from 'readline-sync';
-import { addScore, loseLife} from "../gameState.js";
+import { addScore, loseLife } from "../gameState.js";
 
 export function memoryChallenge() {
 
@@ -14,7 +14,7 @@ export function memoryChallenge() {
     let wordsDrawn = []
 
     while (wordsDrawn.length < 5) {
-        let draw = Math.floor(Math.random() * words.length);
+        let draw = Math.floor(Math.random() * words.length)
 
         if (!wordsDrawn.includes(words[draw])) {
             wordsDrawn.push(words[draw]);
