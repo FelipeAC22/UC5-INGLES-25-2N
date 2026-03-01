@@ -8,7 +8,11 @@ export function memoryChallenge() {
         "method", "string", "boolean", "integer", "float", "compile", "execute",
         "return", "parameter", "argument", "syntax", "algorithm", "framework",
         "library", "database", "server", "client", "frontend", "backend",
-        "repository", "commit", "branch", "merge", "deploy", "script", "interface", "module"
+        "repository", "commit", "branch", "merge", "deploy", "script", "interface", "module",
+        "pointer", "stack", "queue", "hash", "binary", "recursion", "closure", "callback",
+        "promise", "thread", "process", "exception", "try", "catch", "package", "dependency",
+        "version", "token", "endpoint", "middleware", "protocol", "socket", "session",
+        "cache", "buffer", "bit", "byte", "unicode", "json", "xml", "yaml", "api"
     ]
 
     let wordsDrawn = []
@@ -17,7 +21,7 @@ export function memoryChallenge() {
         let draw = Math.floor(Math.random() * words.length)
 
         if (!wordsDrawn.includes(words[draw])) {
-            wordsDrawn.push(words[draw]);
+            wordsDrawn.push(words[draw])
         }
     }
 
