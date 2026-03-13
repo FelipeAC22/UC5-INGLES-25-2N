@@ -26,9 +26,9 @@ export function battleRPG() {
         { question: "Past of buy:", correct: "bought" }
     ]
 
-    let enemyHP = Math.floor(Math.random() * 51) + 50 // vaariavel que recebe o valor de hp sorteado para o monstro, que tem como minimo 50 e maximo 100 //
+    let enemyHP = Math.floor(Math.random() * 51) + 50 // variavel que recebe o valor de hp sorteado para o monstro, que tem como minimo 50 e maximo 100 //
 
-    console.log(`\nA grammar mosnter appears!`)
+    console.log(`\nA grammar monster appears!`)
 
     questions.forEach(q => { // forEach para cada pergunta //
         if (enemyHP > 0) { // verifica se o monstro ainda está vivo //
@@ -36,7 +36,6 @@ export function battleRPG() {
             console.log("\nEnemy HP:", enemyHP)
             console.log("Answer correctly to attack.\n")
             console.log(q.question)
-            let answer = ask.question("Answer: ") // recebe o input para a resposta no terminal //
             console.clear() // limpa o console depois de cada pergunta //
             if (answer.toLowerCase() === q.correct) { // verfica se a resposta está correta e diminui o hp do monstro //
                 let damage = Math.floor(Math.random() * 11) + 10 // sorteia o dano que é dado a cada acerto, que tem como minimo 10 e mmaximo 20 //
