@@ -1,5 +1,34 @@
 import * as ask from 'readline-sync';
-import { addScore, loseLife } from "../gameState.js";
+import { addScore, loseLife, drawNumber } from "../gameState.js";
+
+function drawWords(wordsList) {
+    let wordsToMemory = []
+    while (wordsToMemory.length < 5) {
+        let draw = drawNumber(0, wordsList.length)
+
+        if (!wordsToMemory.includes(wordsList[draw])) {
+            wordsToMemory.push(wordsList[draw])
+        }
+    }
+    return wordsToMemory
+}
+
+function verifyMemoryAnser(arrayMemory, arrayAnswer) { 
+
+    let isCorrect = false
+
+    if (arrayAnswer.length <= arrayMemory.length) {
+        isCorrect = true
+
+        for (let i = 0; i < arrayAnswer.length; i++) {
+            if (!arrayMemory.includes(arrayAnswer[i])) {
+                isCorrect = false
+                break;
+            }
+        }
+    }
+    return isCorrect
+}
 
 export function memoryChallenge() {
 
@@ -15,15 +44,7 @@ export function memoryChallenge() {
         "cache", "buffer", "bit", "byte", "unicode", "json", "xml", "yaml", "api"
     ]
 
-    let wordsDrawn = []
-
-    while (wordsDrawn.length < 5) {
-        let draw = Math.floor(Math.random() * words.length)
-
-        if (!wordsDrawn.includes(words[draw])) {
-            wordsDrawn.push(words[draw])
-        }
-    }
+    let wordsDrawn = drawWords(words)
 
     console.log("\nMemorize these words:")
     console.log(wordsDrawn.join(" | "))
@@ -37,20 +58,7 @@ export function memoryChallenge() {
         userWords.push(word.trim().toLowerCase())
     }
 
-    let isCorrect = false
-
-    if (userWords.length <= wordsDrawn.length) {
-        isCorrect = true
-
-        for (let i = 0; i < userWords.length; i++) {
-            if (!wordsDrawn.includes(userWords[i])) {
-                isCorrect = false
-                break;
-            }
-        }
-    }
-
-    if (isCorrect) {
+    if (verifyMemoryAnser(wordsDrawn, userWords)) {
         console.log("Perfect memory!")
         addScore(20)
     } else {
