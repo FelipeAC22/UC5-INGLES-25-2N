@@ -1,4 +1,4 @@
-import * as ask from 'readline-sync';
+import * as ask from 'readline-sync'; // refatorado //
 import { addScore, loseLife, drawNumber, pauseGame } from "../gameState.js";
 
 function infoTurn(hp, question) {

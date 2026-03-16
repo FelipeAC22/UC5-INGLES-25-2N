@@ -1,8 +1,10 @@
-import * as ask from 'readline-sync';
-import { addScore, loseLife, drawNumber } from "../gameState.js";
+import * as ask from 'readline-sync'; // refatorado //
+import { addScore, loseLife, drawNumber, pauseGame } from "../gameState.js";
 
 function drawWords(wordsList) {
+
     let wordsToMemory = []
+
     while (wordsToMemory.length < 5) {
         let draw = drawNumber(0, wordsList.length)
 
@@ -10,24 +12,23 @@ function drawWords(wordsList) {
             wordsToMemory.push(wordsList[draw])
         }
     }
+
     return wordsToMemory
 }
 
-function verifyMemoryAnser(arrayMemory, arrayAnswer) { 
+function verifyMemoryAnser(arrayMemory, arrayAnswer) {
 
-    let isCorrect = false
+    if (arrayAnswer.length !== arrayMemory.length) {
+        return false
+    }
 
-    if (arrayAnswer.length <= arrayMemory.length) {
-        isCorrect = true
-
-        for (let i = 0; i < arrayAnswer.length; i++) {
-            if (!arrayMemory.includes(arrayAnswer[i])) {
-                isCorrect = false
-                break;
-            }
+    for (let i = 0; i < arrayAnswer.length; i++) {
+        if (arrayMemory[i] !== arrayAnswer[i]) {
+            return false
         }
     }
-    return isCorrect
+
+    return true
 }
 
 export function memoryChallenge() {
@@ -48,9 +49,7 @@ export function memoryChallenge() {
 
     console.log("\nMemorize these words:")
     console.log(wordsDrawn.join(" | "))
-
     ask.question("\nPress ENTER when ready...")
-
     console.clear()
 
     let userWords = []
@@ -66,5 +65,5 @@ export function memoryChallenge() {
         loseLife()
     }
 
-    ask.question("\nPress ENTER to continue...")
+    pauseGame()
 }
