@@ -8,17 +8,14 @@ function infoTurn(hp, question) {
 }
 
 function verifyAnswer(answer, correct) {
-    if (answer.toLowerCase().trim() === correct) {
-        return true
-    } else {
-        return false
-    }
+    return answer.toLowerCase().trim() === correct
+
 }
 
 function attackEnemy(hp) {
     let damage = drawNumber(10, 20)
     console.log(`Hit! You caused ${damage} of damage`)
-    return hp -= damage
+    return hp - damage
 }
 
 export function battleRPG() {
@@ -50,8 +47,13 @@ export function battleRPG() {
 
     console.log(`\nA grammar monster appears!`)
 
-    questions.forEach(q => {
+    for (q of questions) {
         console.clear()
+        if (enemyHP <= 0) {
+            console.clear()
+            console.log("Monster defeated!")
+            break;
+        }
 
         infoTurn(enemyHP, q)
 
@@ -69,11 +71,6 @@ export function battleRPG() {
                 pauseGame()
             }
         }
-    })
-
-    if (enemyHP <= 0) {
-        console.clear()
-        console.log("Monster defeated!")
     }
 
     pauseGame()

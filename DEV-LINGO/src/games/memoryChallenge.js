@@ -6,7 +6,7 @@ function drawWords(wordsList) {
     let wordsToMemory = []
 
     while (wordsToMemory.length < 5) {
-        let draw = drawNumber(0, wordsList.length)
+        let draw = drawNumber(0, wordsList.length - 1)
 
         if (!wordsToMemory.includes(wordsList[draw])) {
             wordsToMemory.push(wordsList[draw])
