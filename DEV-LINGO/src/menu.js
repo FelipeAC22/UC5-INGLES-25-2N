@@ -1,5 +1,9 @@
-import * as ask from 'readline-sync';
-import { getScore, getLives, resetGame } from "./gameState.js";
+import * as ask from 'readline-sync'
+import { addScore } from "./gameState.js";
+import { loseLife } from "./gameState.js";
+import { getScore } from "./gameState.js";
+import { getLives } from "./gameState.js";
+import { resetGame } from "./gameState.js";
 import { quiz } from "./games/quiz.js";
 import { completeSentence } from "./games/completeSentence.js";
 import { sentenceBuilder } from "./games/sentenceBuilder.js";
@@ -9,29 +13,13 @@ import { detectiveStory } from "./games/detectiveStory.js";
 
 export function showMenu() {
 
-    let actions = {
-        "1": quiz,
-        "2": completeSentence,
-        "3": sentenceBuilder,
-        "4": memoryChallenge,
-        "5": battleRPG,
-        "6": detectiveStory,
-        "0": () => {
-            console.clear()
-            console.log("Program shutting down...")
-            process.exit()
-        }
-    }
-
     while (true) {
 
         if (getLives() <= 0) {
-            console.clear()
-            console.log("\n===== GAME OVER =====")
+            console.log("\nGAME OVER")
             console.log("Final Score:", getScore())
-            ask.question("\nPress ENTER to restart...")
             resetGame()
-        } else { console.clear() }
+        }
 
         console.log(`
 ==========================
@@ -50,14 +38,23 @@ Score: ${getScore()} | Lives: ${getLives()}
 
         let option = ask.question("Choose an option: ")
 
-        console.clear()
-
-        if (actions[option]) {
-            actions[option]()
-        } else {
-            console.log("Invalid option!")
+        switch (option) {
+            case "1": quiz()
+                break;
+            case "2": completeSentence()
+                break;
+            case "3": sentenceBuilder()
+                break;
+            case "4": memoryChallenge()
+                break;
+            case "5": battleRPG()
+                break;
+            case "6": detectiveStory()
+                break;
+            case "0": process.exit()
+            default:
+                console.log("Invalid option!")
         }
     }
 }
-
 
