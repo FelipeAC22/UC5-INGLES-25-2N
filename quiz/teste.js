@@ -174,58 +174,13 @@ export function quiz() {
             explanation: "We use 'is' with 'She'."
         }
     ]
-
-    // for each para percorrer cada pergunta //
-    questions.forEach(q => {
-
-        // limpa o console a cada pergunta //
-        console.clear()
-
-        console.log("\n" + q.question)
-        q.options.forEach(opt => console.log(opt))
-
-        let answer
-
-        // loop para validar input //
-        while (true) {
-
-            answer = ask.question("\nAnswer (1-4): ")
-
-            // verifica se digitou 1, 2, 3 ou 4 //
-            // pra não ter erro //
-            if (["1", "2", "3", "4"].includes(answer)) {
-                break;
-            }
-
-            console.log("\nInvalid option! Please type a number between 1 and 4.")
-        }
-
-        // limpa o console antes dos resultados //
-        console.clear()
-
-        // verifica resposta //
-        if (answer === q.answer) {
-
-            console.log("\nCorrect!")
-            addScore(10)
-
-        } else {
-
-            console.log("\nWrong!")
-            console.log(`Correct answer: ${q.answer}`)
-            loseLife()
-        }
-
-        // mostra explicação //
-        console.log("\nExplanation:")
-        console.log(q.explanation)
-
-        // pausa antes da próxima pergunta //
-        ask.question("\nPress ENTER to continue...")
-    })
-
     function sorteio() {
         let numeroSorteado = Math.floor(Math.random() * questions.length)
-        console.log
+        console.log(questions[numeroSorteado].options)
+    }
+    while (true) {
+        sorteio()
     }
 }
+
+quiz()
