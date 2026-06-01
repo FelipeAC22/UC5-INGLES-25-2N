@@ -1,0 +1,1 @@
+refatorar todo o código que está em JS (programação funcional) para TS (programação orientada a objetos)
