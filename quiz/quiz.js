@@ -117,61 +117,6 @@ export function quiz() {
             ],
             answer: "1",
             explanation: "We use 'are' with plural nouns like 'students'."
-        },
-        {
-            question: "What is the correct sentence?",
-            options: [
-                "1) John and Mike is brothers.",
-                "2) John and Mike am brothers.",
-                "3) John and Mike are brothers.",
-                "4) John and Mike be brothers."
-            ],
-            answer: "3",
-            explanation: "Two people together form a plural subject, so we use 'are'."
-        },
-        {
-            question: "What is the correct sentence?",
-            options: [
-                "1) The cat is black.",
-                "2) The cat are black.",
-                "3) The cat am black.",
-                "4) The cat be black."
-            ],
-            answer: "1",
-            explanation: "We use 'is' with singular nouns like 'The cat'."
-        },
-        {
-            question: "What is the correct sentence?",
-            options: [
-                "1) We is ready.",
-                "2) We are ready.",
-                "3) We am ready.",
-                "4) We be ready."
-            ],
-            answer: "2",
-            explanation: "We use 'are' with 'We'."
-        },
-        {
-            question: "What is the correct sentence?",
-            options: [
-                "1) I is from Brazil.",
-                "2) I are from Brazil.",
-                "3) I be from Brazil.",
-                "4) I am from Brazil."
-            ],
-            answer: "4",
-            explanation: "We use 'am' with 'I'."
-        },
-        {
-            question: "What is the correct sentence?",
-            options: [
-                "1) She are very tired.",
-                "2) She am very tired.",
-                "3) She is very tired.",
-                "4) She be very tired."
-            ],
-            answer: "3",
-            explanation: "We use 'is' with 'She'."
         }
     ]
 
