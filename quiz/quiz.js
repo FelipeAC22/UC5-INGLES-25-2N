@@ -109,7 +109,6 @@ export function quiz() {
             explanation: "'Teachers' is plural, so we use 'are'."
         }
     ]
-
     while (true) {
 
         if (questions.length <= 0) {
@@ -118,13 +117,12 @@ export function quiz() {
         }
 
         console.clear()
-        let drawnNumber = Math.floor(Math.random() * questions.length - 1)
+        let drawnNumber = Math.floor(Math.random() * questions.length)
 
         console.log("Which sentence is correct?")
         questions[drawnNumber].options.forEach(opt => console.log(opt))
 
-        let answer
-
+        let answer 
         while (true) {
 
             answer = ask.question("\nAnswer (1-4): ")
@@ -155,7 +153,8 @@ export function quiz() {
         console.log("\nExplanation:")
         console.log(questions[drawnNumber].explanation)
 
-        ask.question("\nPress ENTER to continue...")
+          ask.question("\nPress ENTER to continue...")
+
         console.clear()
         console.log(`
 ===========================================
